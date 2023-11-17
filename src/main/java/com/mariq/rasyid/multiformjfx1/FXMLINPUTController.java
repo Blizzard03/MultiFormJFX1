@@ -6,6 +6,7 @@ package com.mariq.rasyid.multiformjfx1;
 
 import com.mariq.rasyid.multiformjfx1.Models.MultiFormJFX1Model;
 import com.mariq.rasyid.multiformjfx1.FXMLOutputController;
+import com.mariq.rasyid.multiformjfx1.Models.model_harga;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -124,4 +125,11 @@ public class FXMLINPUTController implements Initializable {
         System.exit(0);
     }
 
+    /*
+    * ubah Harga Method
+     */
+    /*
+    public static getdata(model_harga mdls) {
+        return 0;
+    }*/
 }
