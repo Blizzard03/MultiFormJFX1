@@ -31,6 +31,8 @@ import javafx.stage.Stage;
 public class FXMLINPUTController implements Initializable {
 
     MultiFormJFX1Model dt = new MultiFormJFX1Model();
+    public static model_harga dtharga = new model_harga();
+
     @FXML
     private TextField txtpembeli;
     @FXML
@@ -45,6 +47,8 @@ public class FXMLINPUTController implements Initializable {
     private Button btnhapus;
     @FXML
     private Button btnkeluar;
+    @FXML
+    private Button ubahhargabtn;
 
     /**
      * Initializes the controller class.
@@ -55,6 +59,12 @@ public class FXMLINPUTController implements Initializable {
         chbrumah.setItems(FXCollections.observableArrayList(
                 "Sederhana", "Menengah", "Mewah"));
         chbrumah.getSelectionModel().select(0); //supaya lgs pilihan awal
+        dtharga.setHrsederhana(50000000);
+        dtharga.setHrmenengah(100000000);
+        dtharga.setHrmewah(500000000);
+        dtharga.setHtsederhana(500000);
+        dtharga.setHtmenengah(800000);
+        dtharga.setHtmewah(2000000);
 
     }
 
@@ -125,11 +135,27 @@ public class FXMLINPUTController implements Initializable {
         System.exit(0);
     }
 
-    /*
-    * ubah Harga Method
-     */
-    /*
-    public static getdata(model_harga mdls) {
-        return 0;
-    }*/
+    @FXML
+    private void ubahhargaklik(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mariq/rasyid/multiformjfx1/FXMLUbah_Harga.fxml"));
+            Parent root = (Parent) loader.load();
+            //koding untuk mengirim data ke tampilan output
+            FXMLOutputController isidt
+                    = (FXMLOutputController) loader.getController();
+            isidt.getdata(dt);
+            //membuat windows baru
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            //koding untuk windows dialog / modal       
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            // koding untuk / menampilkan windows 
+            stg.setScene(scene);
+            stg.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

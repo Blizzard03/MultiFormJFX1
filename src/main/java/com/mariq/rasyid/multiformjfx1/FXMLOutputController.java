@@ -59,21 +59,21 @@ public class FXMLOutputController implements Initializable {
         String jenis = "";
         switch (d.getPilihjenis()) {
             case 0:
+                hrumah = FXMLINPUTController.dtharga.getHrsederhana();
+                htanah = FXMLINPUTController.dtharga.getHtsederhana();
                 jenis = "Sederhana";
-                hrumah = 50000000;
-                htanah = 500000;
                 pajak = 0;
                 break;
             case 1:
+                hrumah = FXMLINPUTController.dtharga.getHrmenengah();
+                htanah = FXMLINPUTController.dtharga.getHtmenengah();
                 jenis = "Menengah";
-                hrumah = 100000000;
-                htanah = 1000000;
                 pajak = 0;
                 break;
             case 2:
+                hrumah = FXMLINPUTController.dtharga.getHrmewah();
+                htanah = FXMLINPUTController.dtharga.getHtmewah();
                 jenis = "Mewah";
-                hrumah = 500000000;
-                htanah = 2000000;
                 pajak = (int) Math.round(hrumah * 0.1);
                 break;
             default:
@@ -81,20 +81,19 @@ public class FXMLOutputController implements Initializable {
                 hrumah = 0;
                 htanah = 0;
                 pajak = 0;
+                int hasiltanah = htanah * d.getLuas();
+                int sub = hasiltanah + hrumah;
+                int total = sub + pajak;
+
+                lblpembeli.setText(d.getPembeli());
+                lbljenisrumah.setText(jenis);
+                lblhargarumah.setText(String.valueOf(hrumah));
+                lblluastanah.setText(String.valueOf(d.getLuas()));
+                lblhargatanah.setText(String.valueOf(htanah));
+                lblhasiltanah.setText(String.valueOf(hasiltanah));
+                lblsubtotal.setText(String.valueOf(sub));
+                lblpajak.setText(String.valueOf(pajak));
+                lbltotal.setText(String.valueOf(total));
         }
-        int hasiltanah = htanah * d.getLuas();
-        int sub = hasiltanah + hrumah;
-        int total = sub + pajak;
-
-        lblpembeli.setText(d.getPembeli());
-        lbljenisrumah.setText(jenis);
-        lblhargarumah.setText(String.valueOf(hrumah));
-        lblluastanah.setText(String.valueOf(d.getLuas()));
-        lblhargatanah.setText(String.valueOf(htanah));
-        lblhasiltanah.setText(String.valueOf(hasiltanah));
-        lblsubtotal.setText(String.valueOf(sub));
-        lblpajak.setText(String.valueOf(pajak));
-        lbltotal.setText(String.valueOf(total));
     }
-
 }

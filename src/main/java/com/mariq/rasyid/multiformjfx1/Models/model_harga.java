@@ -60,6 +60,4 @@ public class model_harga {
     public void setHtmewah(int htmewah) {
         this.htmewah = htmewah;
     }
-
-    
 }
